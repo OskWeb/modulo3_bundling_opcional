@@ -1,13 +1,10 @@
-import React from "react";
-                        import "../mystyles.css";
+import React from 'react';
+import '../mystyles.css';
 
-            export const HolaMundo = () => {
-                    const textReact = "Hola Mundo";
+                        export const HolaMundo = () => {
+                const textReact = 'Hola Mundo';
 
-
-
-
-
-
-                return <span id="text-style">{textReact}</span>;
+  
+  
+                        return <span id="text-style">{textReact}</span>;
         };

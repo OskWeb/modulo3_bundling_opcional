@@ -1,19 +1,19 @@
-import path from "path";
-import url from "url";
-import HtmlWebpackPlugin from "html-webpack-plugin";
+import path from 'path';
+import url from 'url';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
 export default {
-  context: path.resolve(__dirname, "src"),
+  context: path.resolve(__dirname, 'src'),
   resolve: {
-    extensions: [".js", ".ts", ".tsx"],
+    extensions: ['.js', '.ts', '.tsx'],
   },
   entry: {
-    app: "./index.tsx",
+    app: './index.tsx',
   },
   output: {
-    filename: "[name].[chunkhash].js",
+    filename: '[name].[chunkhash].js',
     clean: true,
   },
   module: {
@@ -22,20 +22,20 @@ export default {
         test: /\.(js|ts|tsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
         },
       },
       {
         test: /\.(png|jpg)$/,
-        type: "asset/resource",
+        type: 'asset/resource',
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      filename: "index.html",
-      template: "index.html",
-      scriptLoading: "blocking",
+      filename: 'index.html',
+      template: 'index.html',
+      scriptLoading: 'blocking',
     }),
   ],
 };

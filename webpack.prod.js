@@ -1,26 +1,26 @@
-import { merge } from "webpack-merge";
-import common from "./webpack.common.js";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import Dotenv from "dotenv-webpack";
+import { merge } from 'webpack-merge';
+import common from './webpack.common.js';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import Dotenv from 'dotenv-webpack';
 
 export default merge(common, {
-  mode: "production",
+  mode: 'production',
   output: {
-    filename: "js/[name].[chunkhash].js",
-    assetModuleFilename: "images/[hash][ext][query]",
+    filename: 'js/[name].[chunkhash].js',
+    assetModuleFilename: 'images/[hash][ext][query]',
   },
   optimization: {
-    runtimeChunk: "single",
+    runtimeChunk: 'single',
     splitChunks: {
       cacheGroups: {
         vendor: {
-          chunks: "all",
+          chunks: 'all',
           name: (module) => {
             const packageName = module.context.match(
-              /[\\/]node_modules[\\/](.*?)([\\/]|$)/
+              /[\\/]node_modules[\\/](.*?)([\\/]|$)/,
             )?.[1];
             return packageName
-              ? `vendor/${packageName.replace("@", "")}`
+              ? `vendor/${packageName.replace('@', '')}`
               : null;
           },
           test: /[\\/]node_modules[\\/]/,
@@ -37,11 +37,11 @@ export default merge(common, {
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               modules: {
-                exportLocalsConvention: "camelCase",
-                localIdentName: "[path][name]__[local]--[hash:base64:5]",
+                exportLocalsConvention: 'camelCase',
+                localIdentName: '[path][name]__[local]--[hash:base64:5]',
               },
             },
           },
@@ -51,11 +51,11 @@ export default merge(common, {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "css/[name].[chunkhash].css",
-      chunkFilename: "[id].css",
+      filename: 'css/[name].[chunkhash].css',
+      chunkFilename: '[id].css',
     }),
     new Dotenv({
-      path: "./.env.production",
+      path: './.env.production',
     }),
   ],
 });
