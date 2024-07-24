@@ -13,6 +13,11 @@
     "build:perf": "npm run type-check && webpack --config webpack.perf.js",
     "prepare": "husky install"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
   },
