@@ -1,6 +1,7 @@
 import path from 'path';
 import url from 'url';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ESLintWebpackPlugin from 'eslint-webpack-plugin';
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
@@ -37,5 +38,21 @@ export default {
       template: 'index.html',
       scriptLoading: 'blocking',
     }),
+    new ESLintWebpackPlugin({
+      extensions: ['js','jsx','ts','tsx'],
+      exclude: ['node_modules'],
+      formatter: 'stylish',
+      emitWarning: true,
+      failOnWarning: false, // No fallar en advertencias
+      failOnError: false, // No fallar en errores
+      overrideConfig: {
+        "extends": [
+          "eslint:recommended",
+          "plugin:react/recommended",
+          "plugin:@typescript-eslint/recommended",
+          "plugin:react-hooks/recommended"],
+        "rules": {}
+      }
+    })
   ],
 };
