@@ -12,7 +12,7 @@
     "build:prod": "webpack --config webpack.prod.js",
     "build:perf": "npm run type-check && webpack --config webpack.perf.js",
     "prepare": "husky && husky install",
-    "lint": "eslint \"**/*\" --ignore-path .gitignore",
+    "lint": "eslint \"**/*.{js,ts,jsx,tsx}\" --ignore-path .gitignore",
     "prettier": "prettier \"**/*.{js,ts,jsx,tsx}\" --write --ignore-path .gitignore"
   },
   "husky": {
