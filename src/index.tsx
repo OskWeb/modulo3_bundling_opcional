@@ -10,8 +10,7 @@ console.log('API_URL: ', process.env.API_URL);
 
 root.render(
   <div>
-    <h1 className="red-background">React DOM</h1>
     <HolaMundo />
     <img src={logo} style={{ width: 150 }} />
-  </div>,
+  </div>
 );
